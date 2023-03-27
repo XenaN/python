@@ -6,10 +6,13 @@ def fibonacci(n: int):
     Write in terminal 'python fibonacci.py -n <number>'
     
     :param n: count of fibonacci numbers
+    :return: list of fibonacci numbers
     """
 
+    fib = []
     for i in range(n):
-        print(fibonacci_number(i))
+        fib.append((fibonacci_number(i)))
+    return fib
 
 
 def fibonacci_number(n: int) -> int:
@@ -30,4 +33,7 @@ if __name__ == "__main__":
     parser.add_argument("-n", "--number")
     args = parser.parse_args()
 
-    fibonacci(int(args.number))
+    fib = fibonacci(int(args.number))
+    with open("hw1/artifacts/easy/fib.txt", "w") as f:
+        f.write(str(fib))
+
