@@ -40,7 +40,7 @@ if __name__ == "__main__":
     with open('artifacts/hard/logging.txt', 'a') as log_file:
         while True:
             msg = input()
-            log_file.write(f'{datetime.fromtimestamp(time.time())} {msg} \n')
+            log_file.write(f'Input at {datetime.fromtimestamp(time.time())} {msg} \n')
             if msg:
                 main_conn.send(msg)
 
@@ -49,7 +49,7 @@ if __name__ == "__main__":
             msg_end = main_conn_2.recv()
             if msg_end:
                 print(datetime.fromtimestamp(time.time()), msg_end)
-                log_file.write(f'{datetime.fromtimestamp(time.time())} {msg_end} \n')
+                log_file.write(f'Output for {msg} at {datetime.fromtimestamp(time.time())} {msg_end} \n')
 
         p1.join()
         p2.join()
